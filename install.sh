@@ -8,11 +8,10 @@
 set -ue
 
 SCRIPT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-TAG="parts/master"
 
-REPODIR="${SCRIPT_ROOT}/PARTS-llvm"
-LLVM_INSTALL="${SCRIPT_ROOT}/parts-install"
-BUILD_DIR="${SCRIPT_ROOT}/parts-build"
+REPODIR="${SCRIPT_ROOT}/AOS-llvm"
+LLVM_INSTALL="${SCRIPT_ROOT}/AOS-install"
+BUILD_DIR="${SCRIPT_ROOT}/AOS-build"
 LINARO_RELEASE_URL="https://releases.linaro.org/components/toolchain/binaries/7.3-2018.05/aarch64-linux-gnu/"
 LINARO_SYSROOT_FILENAME="sysroot-glibc-linaro-2.25-2018.05-aarch64-linux-gnu.tar.xz"
 LINARO_SYSROOT_URL="${LINARO_RELEASE_URL}/${LINARO_SYSROOT_FILENAME}"
@@ -66,7 +65,7 @@ dependencies() {
 
 compiler() {
     echo "Clonging PARTS LLVM..."
-    git clone --depth 1 -b "$TAG" https://github.com/pointer-authentication/PARTS-llvm.git "$REPODIR"
+    git clone --depth 1 https://github.com/yonghaekim/llvm-AOS.git "$REPODIR"
 
     echo "Compiling LLVM + PACStack..."
     mkdir -p "$BUILD_DIR"
